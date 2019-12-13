@@ -60,4 +60,7 @@
         <!-- 给出需要扫描Dao接口包 -->
         <property name="basePackage" value="cn.com.mapper"/>
     </bean>
+
+    <!-- 扫描service包下所有使用注解的类型 -->
+    <context:component-scan base-package="cn.com.service" />
 </beans>
