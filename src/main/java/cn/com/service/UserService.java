@@ -1,5 +1,10 @@
 package cn.com.service;
 
+import cn.com.entity.User;
+import cn.com.utils.Result;
+
+import java.util.List;
+
 /**
  * <pre>
  * Filename      :  UserService
@@ -11,4 +16,27 @@ package cn.com.service;
  * @author : yangdong.jia
  */
 public interface UserService {
+    /**
+     * 登录
+     * @param account
+     * @param pwd
+     * @return
+     */
+    User login(String account,String pwd);
+
+
+    /**
+     * 添加用户
+     * @param user
+     * @return
+     */
+    Integer add(User user);
+
+
+    /**
+     * 查询用户
+     * @param account
+     * @return
+     */
+    Result<List<User>> query(Integer pageNum, Integer pageSize, String account);
 }

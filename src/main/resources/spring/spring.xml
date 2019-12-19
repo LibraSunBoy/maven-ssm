@@ -61,6 +61,11 @@
         <property name="basePackage" value="cn.com.mapper"/>
     </bean>
 
+    <!-- 异常全局捕捉 -->
+    <bean id="globalExceptionHandler" class="cn.com.exception.GlobalExceptionHandler" />
+
     <!-- 扫描service包下所有使用注解的类型 -->
     <context:component-scan base-package="cn.com.service" />
+    <!-- 扫描config包下所有使用注解的类型 -->
+    <context:component-scan base-package="cn.com.config"/>
 </beans>

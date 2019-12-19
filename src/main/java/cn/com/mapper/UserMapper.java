@@ -1,14 +1,30 @@
 package cn.com.mapper;
 
-/**
- * <pre>
- * Filename      :  UserMapper
- * Package       :  cn.com.mapper
- * Company       :  上海想星商务服务有限公司
- * Create Date   :  2019年12月2019/12/13日
- * </pre>
- *
- * @author : yangdong.jia
- */
+import cn.com.entity.User;
+import cn.com.entity.UserExample;
+import java.util.List;
+import org.apache.ibatis.annotations.Param;
+
 public interface UserMapper {
+    int countByExample(UserExample example);
+
+    int deleteByExample(UserExample example);
+
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(User record);
+
+    int insertSelective(User record);
+
+    List<User> selectByExample(UserExample example);
+
+    User selectByPrimaryKey(Integer id);
+
+    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
+
+    int updateByPrimaryKeySelective(User record);
+
+    int updateByPrimaryKey(User record);
 }
