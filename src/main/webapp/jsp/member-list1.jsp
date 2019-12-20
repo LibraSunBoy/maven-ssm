@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="<%=basePath %>/css/xadmin.css">
         <script src="<%=basePath %>/lib/layui/layui.js" charset="utf-8"></script>
         <script type="text/javascript" src="<%=basePath %>/js/xadmin.js"></script>
+        <script type="text/javascript" src="<%=basePath %>/js/dateform.js"></script>
         <!--[if lt IE 9]>
           <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
           <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
@@ -55,10 +56,10 @@
                                     <tr>
                                         <th lay-data="{type:'checkbox',width:80}">ID</th>
                                         <th lay-data="{field:'id',width:80, sort: true}">ID</th>
-                                        <th lay-data="{field:'account', edit: 'text'}">用户名</th>
+                                        <th lay-data="{field:'account'}">用户名</th>
                                         <th lay-data="{field:'role', edit: 'text'}">角色</th>
-                                        <th lay-data="{field:'status', edit: 'text'}">状态</th>
-                                        <th lay-data="{field:'createDate',  edit: 'text'}">创建时间</th>
+                                        <th lay-data="{field:'status', templet: '#status'}">状态</th>
+                                        <th lay-data="{field:'createDate', templet: function(d){return layui.laytpl.toDateString(d.createDate)}}">创建时间</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -75,26 +76,13 @@
             <button class = "layui-btn layui-btn-sm" lay-event = "isAll" > 验证是否全选</button>
         </div >
     </script>
-    <script type="text/html" id="switchTpl">
-        <!-- 这里的checked的状态只是演示 -->
-        <input type = "checkbox" name = "sex" value = "{{d.id}}" lay-skin = "switch"lay-text = "女|男" lay-filter = "sexDemo" {{ d.id == 10003 ? 'checked': ''}} >
+    <script type="text/html" id="status">
+        {{#  if(d.status == 1){ }}
+        可用
+        {{#  } else { }}
+        禁用
+        {{#  } }}
     </script>
-<%--    <script>--%>
-<%--        layui.use('laydate',function() {--%>
-<%--            var laydate = layui.laydate;--%>
-
-<%--            //执行一个laydate实例--%>
-<%--            laydate.render({--%>
-<%--                elem: '#start' //指定元素--%>
-<%--            });--%>
-
-<%--            //执行一个laydate实例--%>
-<%--            laydate.render({--%>
-<%--                elem: '#end' //指定元素--%>
-<%--            });--%>
-
-<%--        });--%>
-<%--    </script>--%>
     <script>
         layui.use('table',function() {
             var table = layui.table;
